@@ -15,7 +15,7 @@
         .container {
             margin-top: 60px;
         }
-        .card {
+        .car {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px; 
@@ -43,7 +43,7 @@
                     <button class="btn btn-outline-success" type="submit">TrackOrder</button>
             </li>
         </ul>-->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
             <div class="container-fluid" class="nav justify-content-center">
             <a class="navbar-brand" href="#">WayWise</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,16 +83,25 @@
         <a href="/adddelivery" class="btn btn-outline-success"id="addDeliveryBtn">Add Delivery</a>
     <div class="container align-center" > <!-- Added text-center class -->
         
-        <div class="row row-cols-1 row-cols-md-4 g-3" id="deliveryBoxes">
+        <div class="row row-cols-1 row-cols-md-4 g-5" id="deliveryBoxes">
             <% deliveries.forEach(delivery => { %>
                 <div class="col">
-                    <div class="card">
-                        <h3>Delivery</h3>
+                    <div class="card mb-3 " style="width: 20rem;">
+                        
                         <div>
-                            <h5>Package Name: <%= delivery.packagename %></h3>
-                            <h5>Delivery date: <%= delivery.deliveryTime %></h3>
+                            <div class="card-header">
+                                <p>Package Name: <%= delivery.packagename %></p>
+                            </div>
+                            
+                            <p>Delivery date: <%= delivery.deliveryTime %></p>
                             <!-- Add more fields as needed -->
+                            
                         </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-outline-danger">Delete</button>
+                            <button type="button" class="btn btn-outline-primary">Edit</button>
+                        </div>
+                        
                     </div>
                     
                 </div>
