@@ -1,0 +1,66 @@
+<!-- index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            max-height: 220px;
+            overflow-y: auto; 
+            max-width: 390px; 
+            margin: 10 auto;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #ff0033;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Courier Management System</h1>
+
+
+        <a href="/adddelivery" class="btn">ADD NEW DELIVERY</a>
+        
+        <!-- Display deliveries inside a box -->
+        <div class="box">
+            <h2>Deliveries</h2>
+            <% if (deliveries.length > 0) { %>
+                <!-- Display details of the first delivery -->
+                <div>
+                    <h3>Sender: <%= deliveries[0].senderName %></h3>
+                    <h3>Receiver: <%= deliveries[0].receiverName %></h3>
+                    <!-- Add more fields as needed -->
+                </div>
+            <% } else { %>
+                <p>No deliveries found</p>
+            <% } %>
+        </div>
+        
+        
+        
+    </div>
+</body>
+</html>

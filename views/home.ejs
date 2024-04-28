@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- index.ejs -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,31 +12,97 @@
             text-align: center;
         }
         .container {
-            margin-top: 100px;
+            margin-top: 50px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px; 
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            max-height: 220px;
+            overflow-y: auto; 
+            max-width: 390px; 
+            
         }
         .btn {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #ff0033;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
             text-decoration: none;
+            margin-top: 20px; 
+            display: block; 
+            width: 200px; 
+            margin: 0 auto; 
         }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+            }
+            .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+            .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            }
+            .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+            }
+
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to Courier Management System</h1>
-        
-        <a href="/adddelivery" class="btn">ADD NEW DELIVERY</a>
-    </div>
 
-    <script>
-        function redirectToDeliveryPage() {
-            window.location.href = "/add-delivery";
-        }
-    </script>
+
+        <a href="/adddelivery" class="btn">ADD NEW DELIVERY</a>
+        
+
+        
+            <div class="row">
+                <div class="column">
+                    <div class="box">
+                        <h2>Deliveries</h2>
+                        <% if (deliveries.length > 0) { %>
+                            
+                            <div>
+                                <h3>Sender: <%= deliveries[0].senderName %></h3>
+                                <h3>Receiver: <%= deliveries[0].receiverName %></h3>
+                                
+                            </div>
+                        <% } else { %>
+                            <p>No deliveries found</p>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="column" >
+                    <div class="box">
+                        <h2>Deliveries</h2>
+                        <% if (deliveries.length > 0) { %>
+                            
+                            <div>
+                                <h3>Sender: <%= deliveries[1].senderName %></h3>
+                                <h3>Receiver: <%= deliveries[1].receiverName %></h3>
+                                
+                            </div>
+                        <% } else { %>
+                            <p>No deliveries found</p>
+                        <% } %>
+                    </div>
+                </div>
+                
+            </div>
+    </div>
 </body>
 </html>
