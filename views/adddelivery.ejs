@@ -4,66 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Delivery</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark text-light">
     <div class="container mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title text-center">Add New Delivery</h2>
-                <form action="/adddelivery" method="post">
-                    <div class="form-group">
-                        <label for="sender_name">Sender Name:</label>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2 class="text-center mb-4">Add New Delivery</h2>
+                <form action="/adddelivery" method="post" class="row g-3">
+                    <div class="col-md-6">
+                        <label for="sender_name" class="form-label">Sender Name:</label>
                         <input type="text" id="sender_name" name="sender_name" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="sender_address">Sender Address:</label>
+                    <div class="col-md-6">
+                        <label for="sender_address" class="form-label">Sender Address:</label>
                         <input type="text" id="sender_address" name="sender_address" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="sender_contact">Sender Contact:</label>
+                    <div class="col-md-6">
+                        <label for="sender_contact" class="form-label">Sender Contact:</label>
                         <input type="tel" id="sender_contact" name="sender_contact" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="receiver_name">Receiver Name:</label>
+                    <div class="col-md-6">
+                        <label for="receiver_name" class="form-label">Receiver Name:</label>
                         <input type="text" id="receiver_name" name="receiver_name" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="receiver_address">Receiver Address:</label>
+                    <div class="col-md-6">
+                        <label for="receiver_address" class="form-label">Receiver Address:</label>
                         <input type="text" id="receiver_address" name="receiver_address" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="receiver_contact">Receiver Contact:</label>
+                    <div class="col-md-6">
+                        <label for="receiver_contact" class="form-label">Receiver Contact:</label>
                         <input type="tel" id="receiver_contact" name="receiver_contact" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="packagename">Package Name:</label>
+                    <div class="col-md-6">
+                        <label for="packagename" class="form-label">Package Name:</label>
                         <input type="text" id="packagename" name="packagename" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="package_description">Package Description:</label>
+                    <div class="col-md-6">
+                        <label for="package_description" class="form-label">Package Description:</label>
                         <input type="text" id="package_description" name="package_description" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="package_weight">Package Weight (in kg):</label>
+                    <div class="col-md-6">
+                        <label for="package_weight" class="form-label">Package Weight (in kg):</label>
                         <input type="number" id="package_weight" name="package_weight" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="service_type">Service Type:</label>
-                        <select id="service_type" name="service_type" class="form-control" required>
+                    <div class="col-md-6">
+                        <label for="service_type" class="form-label">Service Type:</label>
+                        <select id="service_type" name="service_type" class="form-select" required>
                             <option value="standard">Standard</option>
                             <option value="express">Express</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="pickup_time">Preferred Pickup Time:</label>
+                    <div class="col-md-6">
+                        <label for="pickup_time" class="form-label">Preferred Pickup Time:</label>
                         <input type="datetime-local" id="pickup_time" name="pickup_time" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="delivery_time">Preferred Delivery Time:</label>
+                    <div class="col-md-6">
+                        <label for="delivery_time" class="form-label">Preferred Delivery Time:</label>
                         <input type="datetime-local" id="delivery_time" name="delivery_time" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-outline-primary">Submit</button>
+                    </div>
                 </form>
             </div>
         </div>
