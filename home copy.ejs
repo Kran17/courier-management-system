@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Shipping Form</title>
+</head>
+<body>
+
+<h2>Package Details</h2>
+<form id="packageForm">
+
+<label for="packagename">Name:</label>
+<input type="text" id="packagename" name="packagename" required><br><br>
+
+<label for="packageLength">Length (in inches):</label>
+<input type="number" id="packageLength" name="packageLength" required><br><br>
+
+<label for="packageWidth">Width (in inches):</label>
+<input type="number" id="packageWidth" name="packageWidth" required><br><br>
+
+<label for="packageHeight">Height (in inches):</label>
+<input type="number" id="packageHeight" name="packageHeight" required><br><br>
+
+<label for="packageWeight">Weight:</label>
+<input type="number" id="packageWeight" name="packageWeight" step="0.01" required>
+<select id="weightUnit" name="weightUnit">
+
+</select><br><br>
+
+<label for="packageContents">Contents:</label><br>
+<textarea id="packageContents" name="packageContents" rows="4" cols="50" required></textarea><br><br>
+</form>
+
+<button type="submit">Submit</button>
+
+</body>
+</html>

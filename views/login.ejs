@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="/admin" class="link">Admin login</a>
+        <h2>Login</h2>
+        <form id="loginForm" action="/login" method="post">
+            <label for="username">Email or Phone Number:</label>
+            <input type="text" id="username" name="username" required><br>
+            <span id="usernameError" class="error"></span><br> <!-- Error message container -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <span id="passwordError" class="error"></span><br> <!-- Error message container -->
+            <button type="submit" id="loginButton" disabled>Login</button>
+        </form>
+        <p>Don't have an account? <a href="/signup">Signup</a></p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+            const usernameError = document.getElementById("usernameError");
+            const passwordError = document.getElementById("passwordError");
+            const loginButton = document.getElementById("loginButton");
+
+            // Function to validate the username field
+            function validateUsername() {
+                const username = usernameInput.value.trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const phonePattern = /^\d{10}$/;
+                if (!emailPattern.test(username) && !phonePattern.test(username)) {
+                    usernameError.textContent = "Please enter a valid email or phone number.";
+                    return false;
+                } else {
+                    usernameError.textContent = ""; // Clear any previous error message
+                    return true;
+                }
+            }
+
+            // Function to validate the password field
+            function validatePassword() {
+                const password = passwordInput.value.trim();
+                if (password.length < 8) {
+                    passwordError.textContent = "Password must be at least 8 characters long.";
+                    return false;
+                } else {
+                    passwordError.textContent = ""; // Clear any previous error message
+                    return true;
+                }
+            }
+
+            // Event listeners for input events on username and password fields for real-time validation
+            usernameInput.addEventListener("input", function() {
+                validateUsername();
+                // Enable or disable login button based on validation result
+                loginButton.disabled = !validateUsername() || !validatePassword();
+            });
+
+            passwordInput.addEventListener("input", function() {
+                validatePassword();
+                // Enable or disable login button based on validation result
+                loginButton.disabled = !validateUsername() || !validatePassword();
+            });
+        });
+    </script>
+</body>
+</html>

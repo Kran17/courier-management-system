@@ -1,0 +1,42 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Courier Management System</h1>
+        
+        <a href="/adddelivery" class="btn">ADD NEW DELIVERY</a>
+    </div>
+
+    <script>
+        function redirectToDeliveryPage() {
+            window.location.href = "/add-delivery";
+        }
+    </script>
+</body>
+</html>
