@@ -132,6 +132,76 @@ app.get("/home", async (req, res) => {
     }
 });
 
+// POST route to handle deletion
+app.post("/deleteDelivery", async (req, res) => {
+    const deliveryId = req.body.deliveryId;
+    try {
+        // Use Mongoose to find and delete the delivery by ID
+        await Delivery.findByIdAndDelete(deliveryId);
+        res.redirect("/home"); // Redirect to home page after deletion
+    } catch (error) {
+        console.error("Error deleting delivery:", error);
+        res.status(500).send("Error deleting delivery. Please try again later.");
+    }
+});
+
+
+
+// GET route to render edit delivery page
+// GET route to render edit delivery page
+app.get("/editDelivery", async (req, res) => {
+    const deliveryId = req.query.deliveryId;
+    try {
+        // Use Mongoose to find the delivery by ID
+        const delivery = await Delivery.findById(deliveryId);
+        if (!delivery) {
+            return res.status(404).send("Delivery not found");
+        }
+        res.render("editDelivery", { delivery });
+    } catch (error) {
+        console.error("Error fetching delivery for editing:", error);
+        res.status(500).send("Error fetching delivery for editing. Please try again later.");
+    }
+});
+
+
+// POST route to handle editing delivery
+app.post("/editDelivery", async (req, res) => {
+    const deliveryId = req.body.deliveryId;
+    try {
+        // Retrieve the existing delivery data from the database
+        const existingDelivery = await Delivery.findById(deliveryId);
+
+
+        // Construct the updated delivery data based on the form inputs and existing data
+        const updatedDeliveryData = {
+            ...(req.body.packagename && { packagename: req.body.packagename }),
+            ...(req.body.service_type && { serviceType: req.body.service_type }),
+            ...(req.body.package_description && { packageDescription: req.body.package_description }),
+            ...(req.body.package_weight && { packageWeight: req.body.package_weight }),
+            ...(req.body.sender_name && { senderName: req.body.sender_name }),
+            ...(req.body.sender_address && { senderAddress: req.body.sender_address }),
+            ...(req.body.sender_contact && { senderContact: req.body.sender_contact }),
+            ...(req.body.receiver_name && { receiverName: req.body.receiver_name }),
+            ...(req.body.receiver_address && { receiverAddress: req.body.receiver_address }),
+            ...(req.body.receiver_contact && { receiverContact: req.body.receiver_contact }),
+            // Add other fields as needed
+        };
+
+        // Use Mongoose to find and update the delivery by ID, only updating the fields that have changed
+        const updatedDelivery = await Delivery.findByIdAndUpdate(deliveryId, updatedDeliveryData, { new: true });
+
+        if (!updatedDelivery) {
+            return res.status(404).send("Delivery not found");
+        }
+
+        res.redirect("/home"); // Redirect to home page after editing
+    } catch (error) {
+        console.error("Error editing delivery:", error);
+        res.status(500).send("Error editing delivery. Please try again later.");
+    }
+});
+
 
 const PORT = 3000;
 app.listen(PORT, () => {

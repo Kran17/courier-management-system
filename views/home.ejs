@@ -98,8 +98,14 @@
                             
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-outline-danger">Delete</button>
-                            <button type="button" class="btn btn-outline-primary">Edit</button>
+                            <form action="/deleteDelivery" method="POST">
+                                <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            <form action="/editDelivery" method="GET">
+                                <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
+                                <button type="submit" class="btn btn-outline-primary">Edit</button>
+                            </form>
                         </div>
                         
                     </div>
