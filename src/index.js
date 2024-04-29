@@ -26,7 +26,7 @@ app.post("/login", async (req,res)=>{
         }
         const isPasswordMatch = await bcrypt.compare(req.body.password,check.password);
         if (isPasswordMatch){
-            res.render("home");
+            res.redirect("home");
         }
         else{
             req.send("wrong passwod");
@@ -79,7 +79,7 @@ app.post("/admin", async (req,res)=>{
         }
     }catch{
         res.send("worng details");
-
+        
     }
 
 });
@@ -121,10 +121,10 @@ app.post("/adddelivery", async (req, res) => {
 
 app.get("/home", async (req, res) => {
     try {
-        // Fetch delivery data from the MongoDB collection
+    
         const deliveries = await Delivery.find();
         
-        // Render the home page (passing the delivery data to the template)
+        
         res.render("home", { deliveries });
     } catch (error) {
         console.error("Error fetching deliveries:", error);
@@ -132,13 +132,12 @@ app.get("/home", async (req, res) => {
     }
 });
 
-// POST route to handle deletion
+
 app.post("/deleteDelivery", async (req, res) => {
     const deliveryId = req.body.deliveryId;
     try {
-        // Use Mongoose to find and delete the delivery by ID
         await Delivery.findByIdAndDelete(deliveryId);
-        res.redirect("/home"); // Redirect to home page after deletion
+        res.redirect("/home"); 
     } catch (error) {
         console.error("Error deleting delivery:", error);
         res.status(500).send("Error deleting delivery. Please try again later.");
@@ -147,12 +146,10 @@ app.post("/deleteDelivery", async (req, res) => {
 
 
 
-// GET route to render edit delivery page
-// GET route to render edit delivery page
 app.get("/editDelivery", async (req, res) => {
     const deliveryId = req.query.deliveryId;
     try {
-        // Use Mongoose to find the delivery by ID
+        
         const delivery = await Delivery.findById(deliveryId);
         if (!delivery) {
             return res.status(404).send("Delivery not found");
@@ -165,15 +162,12 @@ app.get("/editDelivery", async (req, res) => {
 });
 
 
-// POST route to handle editing delivery
+
 app.post("/editDelivery", async (req, res) => {
     const deliveryId = req.body.deliveryId;
     try {
-        // Retrieve the existing delivery data from the database
+        
         const existingDelivery = await Delivery.findById(deliveryId);
-
-
-        // Construct the updated delivery data based on the form inputs and existing data
         const updatedDeliveryData = {
             ...(req.body.packagename && { packagename: req.body.packagename }),
             ...(req.body.service_type && { serviceType: req.body.service_type }),
@@ -188,20 +182,38 @@ app.post("/editDelivery", async (req, res) => {
             // Add other fields as needed
         };
 
-        // Use Mongoose to find and update the delivery by ID, only updating the fields that have changed
+        
         const updatedDelivery = await Delivery.findByIdAndUpdate(deliveryId, updatedDeliveryData, { new: true });
 
         if (!updatedDelivery) {
             return res.status(404).send("Delivery not found");
         }
 
-        res.redirect("/home"); // Redirect to home page after editing
+        res.redirect("/home"); 
     } catch (error) {
         console.error("Error editing delivery:", error);
         res.status(500).send("Error editing delivery. Please try again later.");
     }
 });
 
+/*Delivery.create({
+    senderName: 'Emily White',
+    senderAddress: '789 Maple St, Suburb, Country',
+    receiverName: 'Daniel Lee',
+    receiverAddress: '456 Oak St, Village, Country',
+    packagename: 'Toys',
+    packageDescription: 'Assorted toys for kids',
+    packageWeight: 1.2,
+    serviceType: 'Express',
+    pickupTime: new Date('2024-05-03T10:00:00Z'),
+    deliveryTime: new Date('2024-05-04T10:00:00Z')
+})
+.then(savedDelivery => {
+    console.log('Delivery saved successfully:', savedDelivery);
+})
+.catch(error => {
+    console.error('Error saving delivery:', error);
+});*/
 
 const PORT = 3000;
 app.listen(PORT, () => {
