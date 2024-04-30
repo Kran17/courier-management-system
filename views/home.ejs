@@ -121,13 +121,11 @@
                                 
                                 
                                 <form action="/deleteDelivery" method="POST">
-                                    <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    <button type="submit" class="btn btn-outline-danger" name="deliveryId" value="<%= delivery._id %>">Delete</button>
                                 </form>
-                                <form action="/editDelivery" method="GET">
-                                    <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
-                                    <button type="submit" class="btn btn-outline-primary">Edit</button>
-                                </form>
+                                <a href="/editDelivery?deliveryId=<%= delivery._id %>" class="btn btn-outline-primary">Edit</a>
+
+                                
                             </div>
                         </div>
                     </div>
