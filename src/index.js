@@ -201,17 +201,24 @@ app.post("/editDelivery", async (req, res) => {
 });
 
 /*Delivery.create({
-    senderName: 'Emily White',
-    senderAddress: '789 Maple St, Suburb, Country',
-    receiverName: 'Daniel Lee',
-    receiverAddress: '456 Oak St, Village, Country',
-    packagename: 'Toys',
-    packageDescription: 'Assorted toys for kids',
-    packageWeight: 1.2,
-    serviceType: 'Express',
-    pickupTime: new Date('2024-05-03T10:00:00Z'),
-    deliveryTime: new Date('2024-05-04T10:00:00Z')
-})
+    senderName: "Maria Garcia",
+    senderAddress: "987 Walnut Lane, Anystate, USA",
+    receiverName: "Carlos Hernandez",
+    receiverAddress: "210 Pine Avenue, Anystate, USA",
+    packagename: "Books",
+    packageDescription: "Educational textbooks",
+    packageWeight: 4, // in kilograms
+    packageDimensions: {
+        length: 25, // in centimeters
+        width: 20, // in centimeters
+        height: 15 // in centimeters
+    },
+    serviceType: "International",
+    price: 30 // in USD
+}
+
+
+)
 .then(savedDelivery => {
     console.log('Delivery saved successfully:', savedDelivery);
 })

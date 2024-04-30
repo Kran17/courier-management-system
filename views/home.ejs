@@ -117,10 +117,8 @@
                                 <!-- Add more fields as needed -->
                             </div>
                             <div class="card-footer">
-                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="displayDeliveryDetails('<%= delivery.senderName %>', '<%= delivery.senderAddress %>', '<%= delivery.receiverName %>', '<%= delivery.receiverAddress %>')">View</button>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="displayDeliveryDetails('<%= delivery.packagename %>','<%= delivery.senderName %>', '<%= delivery.senderAddress %>', '<%= delivery.receiverName %>', '<%= delivery.receiverAddress %>')">View</button>
                                 
-                                    <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
-                                    <button type="submit" class="btn btn-outline-danger" onclick="displayDeliveryDetails('<%= delivery.senderName %>', '<%= delivery.senderAddress %>', '<%= delivery.receiverName %>', '<%= delivery.receiverAddress %>')">VIEW</button>
                                 
                                 <form action="/deleteDelivery" method="POST">
                                     <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
@@ -150,7 +148,7 @@
         });
     </script>
     <script>
-        function displayDeliveryDetails(packagename,senderName, senderAddress, receiverName, receiverAddress) {
+        function displayDeliveryDetails(packagename,senderName, senderAddress, receiverName, receiverAddress,price) {
             
             document.getElementById('packagename').textContent = packagename;
             document.getElementById('senderName').textContent = senderName;
@@ -158,7 +156,7 @@
             document.getElementById('receiverName').textContent = receiverName;
             document.getElementById('receiverAddress').textContent = receiverAddress;
             
-            // Add more fields as needed
+            
         }
     </script>
 </body>
