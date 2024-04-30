@@ -38,6 +38,34 @@
         <input type="hidden" name="deliveryId" value="<%= delivery._id %>">
         
         <div class="row mb-3">
+            <label for="sender_name" class="col-sm-3 col-form-label">Sender Name:</label>
+            <div class="col-sm-9">
+                <input type="text" id="sender_name" name="sender_name" value="<%= delivery.senderName %>" class="form-control">
+            </div>
+        </div>
+    
+        <div class="row mb-3">
+            <label for="sender_address" class="col-sm-3 col-form-label">Sender Address:</label>
+            <div class="col-sm-9">
+                <input type="text" id="sender_address" name="sender_address" value="<%= delivery.senderAddress %>" class="form-control">
+            </div>
+        </div>
+    
+        <div class="row mb-3">
+            <label for="receiver_name" class="col-sm-3 col-form-label">Receiver Name:</label>
+            <div class="col-sm-9">
+                <input type="text" id="receiver_name" name="receiver_name" value="<%= delivery.receiverName %>" class="form-control">
+            </div>
+        </div>
+    
+        <div class="row mb-3">
+            <label for="receiver_address" class="col-sm-3 col-form-label">Receiver Address:</label>
+            <div class="col-sm-9">
+                <input type="text" id="receiver_address" name="receiver_address" value="<%= delivery.receiverAddress %>" class="form-control">
+            </div>
+        </div>
+    
+        <div class="row mb-3">
             <label for="packagename" class="col-sm-3 col-form-label">Package Name:</label>
             <div class="col-sm-9">
                 <input type="text" id="packagename" name="packagename" value="<%= delivery.packagename %>" class="form-control">
@@ -47,40 +75,50 @@
         <div class="row mb-3">
             <label for="package_description" class="col-sm-3 col-form-label">Package Description:</label>
             <div class="col-sm-9">
-                <input type="text" id="package_description" name="package_description" value="<%= delivery.package_description %>" class="form-control">
+                <input type="text" id="package_description" name="package_description" value="<%= delivery.packageDescription %>" class="form-control">
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <label for="package_weight" class="col-sm-3 col-form-label">Package Weight (in kg):</label>
+            <div class="col-sm-9">
+                <input type="number" id="package_weight" name="package_weight" value="<%= delivery.packageWeight %>" class="form-control"  oninput="calculatePrice()">
+            </div>
+        </div>
+        
+    
+        <div class="row mb-3">
+            <label for="package_length" class="col-sm-3 col-form-label">Package Length (in cm):</label>
+            <div class="col-sm-3">
+                <input type="number" id="package_length" name="package_length" value="<%= delivery.packageDimensions.length %>" class="form-control">
+            </div>
+            <label for="package_width" class="col-sm-3 col-form-label">Package Width (in cm):</label>
+            <div class="col-sm-3">
+                <input type="number" id="package_width" name="package_width" value="<%= delivery.packageDimensions.width %>" class="form-control">
             </div>
         </div>
     
         <div class="row mb-3">
-            <label for="package_weight" class="col-sm-3 col-form-label">Package Weight (in kg):</label>
+            <label for="package_height" class="col-sm-3 col-form-label">Package Height (in cm):</label>
             <div class="col-sm-9">
-                <input type="number" id="package_weight" name="package_weight" value="<%= delivery.package_weight %>" class="form-control">
+                <input type="number" id="package_height" name="package_height" value="<%= delivery.packageDimensions.height %>" class="form-control">
             </div>
         </div>
-    
-        <!-- Add more form groups similarly -->
     
         <div class="row mb-3">
             <label for="service_type" class="col-sm-3 col-form-label">Service Type:</label>
             <div class="col-sm-9">
                 <select id="service_type" name="service_type" class="form-select">
-                    <option value="standard" <% if (delivery.service_type === 'standard') { %>selected<% } %>>Standard</option>
-                    <option value="express" <% if (delivery.service_type === 'express') { %>selected<% } %>>Express</option>
+                    <option value="standard" <% if (delivery.serviceType === 'standard') { %>selected<% } %>>Standard</option>
+                    <option value="express" <% if (delivery.serviceType === 'express') { %>selected<% } %>>Express</option>
                 </select>
             </div>
         </div>
     
         <div class="row mb-3">
-            <label for="pickup_time" class="col-sm-3 col-form-label">Preferred Pickup Time:</label>
+            <label for="price" class="col-sm-3 col-form-label">Price:</label>
             <div class="col-sm-9">
-                <input type="datetime-local" id="pickup_time" name="pickup_time" value="<%= delivery.pickup_time %>" class="form-control">
-            </div>
-        </div>
-    
-        <div class="row mb-3">
-            <label for="delivery_time" class="col-sm-3 col-form-label">Preferred Delivery Time:</label>
-            <div class="col-sm-9">
-                <input type="datetime-local" id="delivery_time" name="delivery_time" value="<%= delivery.delivery_time %>" class="form-control">
+                <input type="number" id="price" name="price" value="<%= delivery.price %>" class="form-control" readonly>
             </div>
         </div>
     
@@ -92,5 +130,30 @@
     </form>
     
     
+    <script>
+        function calculatePrice() {
+            // Get the package weight from the input field
+            const packageWeight = document.getElementById('package_weight').value;
+    
+            // Define the rates in INR
+            const rates = [
+                { maxWeight: 1, price: 500 },
+                { maxWeight: 5, price: 750 },
+                { maxWeight: 10, price: 1000 }
+            ];
+    
+            // Calculate the delivery charge based on the package weight
+            let deliveryCharge = 0;
+            for (const rate of rates) {
+                if (packageWeight <= rate.maxWeight) {
+                    deliveryCharge = rate.price;
+                    break;
+                }
+            }
+    
+            // Insert the calculated delivery charge into the price input field
+            document.getElementById('price').value = deliveryCharge;
+        }
+    </script>
 </body>
 </html>

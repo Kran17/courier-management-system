@@ -39,8 +39,10 @@ const deliverySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    packagename: { type: String, required: true},
-
+    packagename: {
+        type: String,
+        required: true
+    },
     packageDescription: {
         type: String,
         required: true
@@ -49,16 +51,26 @@ const deliverySchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    packageDimensions: {
+        length: {
+            type: Number,
+            required: true
+        },
+        width: {
+            type: Number,
+            required: true
+        },
+        height: {
+            type: Number,
+            required: true
+        }
+    },
     serviceType: {
         type: String,
         required: true
     },
-    pickupTime: {
-        type: Date,
-        required: true
-    },
-    deliveryTime: {
-        type: Date,
+    price: {
+        type: Number,
         required: true
     }
 });

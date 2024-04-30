@@ -79,7 +79,7 @@ app.post("/admin", async (req,res)=>{
         }
     }catch{
         res.send("worng details");
-        
+
     }
 
 });
@@ -93,17 +93,21 @@ app.post("/adddelivery", async (req, res) => {
     const deliveryData = {
         senderName: req.body.sender_name,
         senderAddress: req.body.sender_address,
-        senderContact: req.body.sender_contact,
         receiverName: req.body.receiver_name,
         receiverAddress: req.body.receiver_address,
-        receiverContact: req.body.receiver_contact,
         packagename: req.body.packagename,
         packageDescription: req.body.package_description,
         packageWeight: req.body.package_weight,
+        packageDimensions: {
+            length: req.body.package_length,
+            width: req.body.package_width,
+            height: req.body.package_height
+        },
         serviceType: req.body.service_type,
-        pickupTime: req.body.pickup_time,
-        deliveryTime: req.body.delivery_time
+        price: req.body.price
     };
+
+
 
     try {
         const newDelivery = await Delivery.create(deliveryData);
