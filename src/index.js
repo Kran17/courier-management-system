@@ -201,21 +201,24 @@ app.post("/editDelivery", async (req, res) => {
 });
 
 /*Delivery.create({
-    senderName: "Maria Garcia",
-    senderAddress: "987 Walnut Lane, Anystate, USA",
-    receiverName: "Carlos Hernandez",
-    receiverAddress: "210 Pine Avenue, Anystate, USA",
-    packagename: "Books",
-    packageDescription: "Educational textbooks",
-    packageWeight: 4, // in kilograms
+    senderName: "Lisa Taylor",
+    senderAddress: "246 Elmwood Drive, Anystate, USA",
+    receiverName: "Daniel Martinez",
+    receiverAddress: "753 Oakwood Lane, Anystate, USA",
+    packagename: "Food",
+    packageDescription: "Assorted gourmet chocolates",
+    packageWeight: 0.8,
     packageDimensions: {
-        length: 25, // in centimeters
-        width: 20, // in centimeters
-        height: 15 // in centimeters
+        length: 6,
+        width: 4,
+        height: 2
     },
     serviceType: "International",
-    price: 30 // in USD
+    price: 15
 }
+
+
+
 
 
 )
