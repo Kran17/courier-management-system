@@ -14,17 +14,21 @@
         margin: 0; /* Added to remove default body margin */
     }
     nav {
-        background-color: #2a284c;
+        background-color: #2a2b39;
         color: #fff;
         padding: 10px 20px;
         text-align: center;
         margin-top: auto;
+        height: 80px;
+        width: 1490px;
+        position: fixed;
+        z-index: 1000; 
     }
     
     nav ul {
         list-style-type: none;
         padding: 0;
-        margin-top: 20px;
+        margin-top: 30px;
     }
     
     nav ul li {
@@ -46,12 +50,21 @@
     }
     /* Added background image */
     .background-image {
-        background-image: url('1.jpg');
-        background-size: cover; /* Adjusts the size of the background image to cover the entire element */
-        background-position: center; /* Centers the background image */
-        height: 800px;
-        
-    }
+    background-image: url('1.png');
+    background-size: cover;
+    background-position: center;
+    height: 870px;
+    margin-top: 0px;
+    position: relative; /* Added position relative to make sure child elements are positioned relative to this */
+}
+
+    /*.button-container {
+    position: absolute; 
+    top: px; 
+    left: 80%;
+    transform: translateX(-50%); 
+}*/
+
     .btn {
         outline: 0;
         display: inline-flex;
@@ -91,26 +104,72 @@
             box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
         }
         }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 400px;
+            height: 400px;
+            margin-top: 300px;
+            margin-left: 1000px;
+            background-color: #2a2b39;
+            position:absolute
+            }
+
+            .card:hover {
+            box-shadow: 8px 8px 16px 0 rgba(0, 0, 0, 0.542);
+            }
+
+            .card img {
+            width: 100%;
+            }
+
+            .card-content {
+            padding: 20px;
+            }
+
+            .card-content h4 {
+            font-size: 40px;
+            margin-top: 0;
+            margin-bottom: 45px;
+            color: #fff;
+            }
+
+            .card-content p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            color:bisque;
+
+            }
     </style>
 </head>
 <body>
     <nav >
         <ul>
+            <li><b><a href="" style="color: #7b07e8;">WayWise</a></b></li>
             <li><a href="home">Home</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="#Services">Services</a></li>
             <li><a href="#">Track Shipment</a></li>
             <li><a href="viewdelivery">View deliveries</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
     <div class="background-image">
-
-
-        <div style="margin-left: 900px; margin-top: 300px;"><a href="/adddelivery" class="btn"><i class="animation"></i>Add Delivery Now<i class="animation"></i>
-        </a></div>
-    
+        
+                <div class="card">
+                    <div class="card-content">
+                        <h4><b>Ship personal courier</b></h4>
+                        <p>Get your shipment picked up
+                            from your doorstep.</p>
+                            <p>Send your parcel from the comfort of your home or office</p>
+                        <a href="/adddelivery" class="btn">
+                            <i class="animation"></i>Add Delivery Now<i class="animation"></i>
+                        </a>
+                    </div>
+                </div>
+        
     </div>
-    <div>
+    
+    <div id="Services">
         <img src="2.jpg">
     </div>
 </body>
