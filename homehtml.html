@@ -1,5 +1,3 @@
-<!-- index.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,367 +5,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <style>body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
-    .container {
-        margin-top: 60px;
-    }
-    .package {
-            width: 280px;
-            height: 254px;
-            background-image: linear-gradient(163deg, #ff00ff 0%, #3700ff 100%);
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.25s cubic-bezier(0, 0, 0, 1);
-            }
-    
-            .package:hover {
-            box-shadow: 0px 0px 30px 1px rgba(204, 0, 255, 0.3);
-            }
-    
-            .package2 {
-            width: 280px;
-            height: 254px;
-            background-color: #1d1724;
-            border-radius: 10px;
-            transition: all 0.25s cubic-bezier(0, 0, 0, 1);
-            padding: 15px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            }
-    
-    
-            .package2:hover {
-            transform: scale(0.98);
-            border-radius: 18px;
-            }
-    
-            .text {
-            color: white;
-            font-size: 17px;
-            }
-    .package2 h5,
-    .package2 p,
-    .package2 button,
-    .package2 a {
-    margin-bottom: 10px; /* Adjust spacing between elements */
-    
-    }
-    .package2 button,
-    .package2 a {
-    
-    }
-    
-    
-                
-            /* Keep existing styles for other buttons */
-    /* Keep existing styles for other buttons */
-    button.noselect {
-    width: 120px;
-    height: 40px;
-    bottom:50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    background: red;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    background: #e62222;
-    position: absolute;
-    right: 10px; /* Add this to ensure proper positioning of the icon */
-    transition: background 200ms;
-     /* Add transition for background color change */
-    }
-    
-    button.noselect .text {
-    transform: translateX(35px);
-    color: white;
-    font-weight: bold;
-    transition: color 200ms; /* Add transition for text color change */
-    }
-    
-    button.noselect .icon {
-    position: absolute;
-    border-left: 1px solid #c41b1b;
-    transform: translateX(110px);
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: width 200ms, border-left 200ms, transform 200ms; /* Add transitions for icon changes */
-    }
-    
-    button.noselect svg {
-    width: 15px;
-    fill: #eee;
-    transition: transform 200ms; /* Add transition for icon scaling */
-    }
-    
-    button.noselect:hover {
-    background: #ff3636;
-    box-shadow: 7px 5px 56px -14px #ff0000;
-    }
-    
-    
-    button.noselect:hover .text {
-    color: transparent;
-    }
-    
-    button.noselect:hover .icon {
-    width: 110px;
-    border-left: none;
-    transform: translateX(0);
-    }
-    
-    button.noselect:focus {
-    outline: none;
-    }
-    
-    button.noselect:active .icon svg {
-    transform: scale(0.8);
-    box-shadow: 7px 5px 56px -14px #ff0000;
-    }
-    #bottone1 {
-    position: absolute;
-    width: 255px;
-    height: 40px;
-    bottom:0;
-    border-radius: 5px;
-    background: #f0a000;
-    border: none;
-    font-family: inherit;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.4s;
-    color:#ffffff;
-    }
-    
-    #bottone1:hover {
-    box-shadow: 7px 5px 56px -14px #C3D900;
-    }
-    
-    #bottone1:active {
-    transform: scale(0.97);
-    box-shadow: 7px 5px 56px -10px #C3D900;
-    }
-    .Btn {
-    position: absolute;
-    left: 3;
-    bottom: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
-    height: 40px;
-    border: none;
-    padding: 0px 20px;
-    background-color: rgb(153, 0, 255);
-    color: white;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 5px;
-    transition-duration: 0.3s;
-    
-    }
-    
-    .svg {
-    width: 16px;
-    position: absolute;
-    right: 0;
-    margin-right: 8px;
-    fill: white;
-    transition-duration: 0.3s;
-    }
-    
-    .Btn:hover {
-    color: transparent;
-    }
-    
-    .Btn:hover svg {
-    right: 43%;
-    margin: 0;
-    padding: 0;
-    border: none;
-    transition-duration: 0.3s;
-    }
-    
-    .Btn:active {
-    transform: translate(3px, 3px);
-    transition-duration: 0.3s;
-    box-shadow: 2px 2px 0px white;
-    }</style>
-</head>
-<body data-bs-theme ="dark">
-    <!--<ul class="nav justify-content-center">
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Active</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-link">
-                <button href="/adddelivery" class="btn btn-outline-success"id="addDeliveryBtn">Add Delivery</button>
-            </li>
-            <li class="nav-link">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Order Id" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">TrackOrder</button>
-            </li>
-        </ul>-->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-            <div class="container-fluid" class="nav justify-content-center">
-            <a class="navbar-brand" href="#">WayWise</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" >
-                <li class="nav-item">
-                    
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-                </ul>
-                <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Order Id" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">TrackOrder</button>
-                </form>
-            </div>
-            </div>
-        </nav> 
-        <br>
-        <a href="/adddelivery" class="btn btn-outline-success"id="addDeliveryBtn">Add Delivery</a>
-        <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delivery Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- Add more data fields here -->
-                        <p>Package Name: <span id="packagename"></span></p>
-                        <p>Sender Name: <span id="senderName"></span></p>
-                        <p>Sender Address: <span id="senderAddress"></span></p>
-                        <p>Receiver Name: <span id="receiverName"></span></p>
-                        <p>Receiver Address: <span id="receiverAddress"></span></p>
-                        <!-- Add more fields as needed -->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <style>
+    /** {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
         
-        <div class="container align-center">
-            <a class="Btn" href="/editDelivery?deliveryId=<%= delivery._id %>" class="btn btn-outline-primary">
-                Edit
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" stroke-width="3"/>
-                </svg>
-            </a>
-            
-            
-                
-                
-                    <div class="col">
-                        <div class="package" >
-                            <div class="package2">
-                                
-                                <h5>Package Name: </h5>
-                                
-                                <p>Delivery date:</p>
-                                <!-- Add more fields as needed -->
-                                
-                                
-                                
-                                
-                                    <a class="Btn"href="/editDelivery?deliveryId=<%= delivery._id %>" class="btn btn-outline-primary">
-                                        Edit
-                                        <svg viewBox="0 0 512 512" class="svg">
-                                        <path
-                                            d="M410.3 231l11.3-11.3-33.9-33.9-62.1-62.1L291.7 89.8l-11.3 11.3-22.6 22.6L58.6 322.9c-10.4 10.4-18 23.3-22.2 37.4L1 480.7c-2.5 8.4-.2 17.5 6.1 23.7s15.3 8.5 23.7 6.1l120.3-35.4c14.1-4.2 27-11.8 37.4-22.2L387.7 253.7 410.3 231zM160 399.4l-9.1 22.7c-4 3.1-8.5 5.4-13.3 6.9L59.4 452l23-78.1c1.4-4.9 3.8-9.4 6.9-13.3l22.7-9.1v32c0 8.8 7.2 16 16 16h32zM362.7 18.7L348.3 33.2 325.7 55.8 314.3 67.1l33.9 33.9 62.1 62.1 33.9 33.9 11.3-11.3 22.6-22.6 14.5-14.5c25-25 25-65.5 0-90.5L453.3 18.7c-25-25-65.5-25-90.5 0zm-47.4 168l-144 144c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l144-144c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6z"
-                                        ></path>
-                                        </svg>
-                                    </a>
-                                    
-                                <button class="noselect"><span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" onclick="deleteDelivery('<%= delivery._id %>')">Delete </path></svg></span></button>
-                                <button type="button" id="bottone1" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="displayDeliveryDetails('<%= delivery.packagename %>','<%= delivery.senderName %>', '<%= delivery.senderAddress %>', '<%= delivery.receiverName %>', '<%= delivery.receiverAddress %>')">View</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+        }
+        
+        .nav-menu {
+            list-style-type: none;
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin-right: 20px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: blue;
+        }
+        
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .line {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+            margin: 3px 0;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+            display: none;
+            }
+        
+            .burger-menu {
+            display: flex;
+            }
+        }
+        /********************************************************************************************************************************************/
+        .main {
+        margin-left: 1000px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background-color: #240046;
+        height: 500px;
+        width: 400px;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 7px 7px 10px 3px #24004628;
+        }
+
+        .form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        }
+
+        /*checkbox to switch from sign up to login*/
+        #chk {
+        display: none;
+        }
+
+        /*Login*/
+        .login {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        }
+
+        .login label {
+        margin: 25% 0 5%;
+        }
+
+        label {
+        color: #fff;
+        font-size: 2rem;
+        justify-content: center;
+        display: flex;
+        font-weight: bold;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+        }
+
+        .input {
+        width: 100%;
+        height: 40px;
+        background: #e0dede;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 4px;
+        }
+
+        /*Register*/
+        .register {
+        background: #eee;
+        border-radius: 90% /10%;
+        height: 900px; 
+        transform: translateY(5%);
+        transition: .8s ease-in-out;
+        }
+
+        .register label {
+        color: #573b8a;
+        transform: scale(.6);
+        }
+
+        #chk:checked ~ .register {
+        transform: translateY(-60%);
+        }
+
+        #chk:checked ~ .register label {
+        transform: scale(1);
+        margin: 10% 0 5%;
+        }
+
+        #chk:checked ~ .login label {
+        transform: scale(.6);
+        margin: 5% 0 5%;
+        }   
+        /*Button*/
+        .form button {
+        width: 85%;
+        height: 40px;
+        margin: 12px auto 10%;
+        color: #fff;
+        background: #573b8a;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: .2s ease-in;
+        }
+
+        .form button:hover {
+        background-color: #6d44b8;
+}
+        .additional-content {
+                max-width: 800px;
+                margin-top: 200px; /* Adjust this value as needed */
+                margin-left: 130px; /* Adjmust the distance from the main container */
+            }
+
+        /*********************************************************************************************************************************************/
+    </style>
+</head>
+<body>
+
+    <!--<nav class="navbar">
+        <div class="container">
+            <h1 class="logo">WayWise</h1>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link">Track</a></li>
+                <li><a href="#" class="nav-link">Services</a></li>
+                <li><a href="#" class="nav-link">About</a></li>
+                <li><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="burger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
             </div>
-        </div>  
-    <!-- Bootstrap JS (Optional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+            </div>
+    </nav>-->
+            <div class="main">  	
+                <input type="checkbox" id="chk" aria-hidden="true">
+                
+        
+                    <div class="login">
+                        <form class="form">
+                            <label for="chk" aria-hidden="true">Log in</label>
+                            <input class="input" type="email" name="email" placeholder="Email" required="">
+                            <input class="input" type="password" name="pswd" placeholder="Password" required="">
+                            <button>Log in</button>
+                        </form>
+                    </div>
+        
+                    <div class="register">
+                        <form class="form">
+                            <label for="chk" aria-hidden="true">Register</label>
+                            <input class="input" type="text" name="txt" placeholder="Username" required="">
+                            <input class="input" type="email" name="email" placeholder="Email" required="">
+                            <input class="input" type="password" name="pswd" placeholder="Password" required="">
+                            <button>Register</button>
+                        </form>
+                    </div>
+                    
+            </div>
+            <div class="additional-content">
+                <h1 style="color: #520898;"><b>WayWise</b></h1>
+            <h1>Get your shipment picked up</h1>
+            <h1>    from your doorstep</h1>
+            <h3>  Send your parcel from the comfort of your home or office</h3></div>
+            
     <script>
-        function deleteDelivery(deliveryId) {
-            // Create a new XMLHttpRequest object
-            var xhr = new XMLHttpRequest();
-            
-            // Define the request method and URL
-            xhr.open('POST', '/deleteDelivery', true);
-            
-            // Set the request header
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            
-            // Define the function to handle the response
-            xhr.onload = function() {
-                // Check if the request was successful
-                if (xhr.status >= 200 && xhr.status < 300) {
-                    // Reload the page to reflect the changes after deletion
-                    window.location.reload();
-                } else {
-                    // Handle error response, if needed
-                    console.error('Error deleting delivery');
-                }
-            };
-            
-            // Define the function to handle errors
-            xhr.onerror = function() {
-                console.error('Request failed');
-            };
-            
-            // Send the request with the deliveryId as the body
-            xhr.send('deliveryId=' + encodeURIComponent(deliveryId));
-        }
-    </script>
-    <script>
-        function displayDeliveryDetails(packagename,senderName, senderAddress, receiverName, receiverAddress,price) {
-            
-            document.getElementById('packagename').textContent = packagename;
-            document.getElementById('senderName').textContent = senderName;
-            document.getElementById('senderAddress').textContent = senderAddress;
-            document.getElementById('receiverName').textContent = receiverName;
-            document.getElementById('receiverAddress').textContent = receiverAddress;
-            
-            
-        }
+        const burgerMenu = document.querySelector('.burger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        burgerMenu.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        });
     </script>
 </body>
 </html>

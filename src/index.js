@@ -200,6 +200,18 @@ app.post("/editDelivery", async (req, res) => {
     }
 });
 
+app.get("/viewdelivery", async (req, res) => {
+    try {
+    
+        const deliveries = await Delivery.find();
+        
+        
+        res.render("viewdelivery", { deliveries });
+    } catch (error) {
+        console.error("Error fetching deliveries:", error);
+        res.status(500).send("Error fetching deliveries. Please try again later.");
+    }
+});
 /*Delivery.create({
     senderName: "Lisa Taylor",
     senderAddress: "246 Elmwood Drive, Anystate, USA",
