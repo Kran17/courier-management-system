@@ -1,3 +1,5 @@
+<!-- index.ejs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,12 +49,52 @@
         background-image: url('1.jpg');
         background-size: cover; /* Adjusts the size of the background image to cover the entire element */
         background-position: center; /* Centers the background image */
-         /* Adjust as needed */
+        height: 800px;
+        
     }
+    .btn {
+        outline: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #de3232;
+        min-width: 200px;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+        box-sizing: border-box;
+        padding: 16px 20px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        overflow: hidden;
+        cursor: pointer;
+        }
+
+        .btn:hover {
+        opacity: .95;
+        }
+
+        .btn .animation {
+        border-radius: 100%;
+        animation: ripple 0.6s linear infinite;
+        }
+
+        @keyframes ripple {
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1), 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1);
+        }
+
+        100% {
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1), 0 0 0 40px rgba(255, 255, 255, 0.1), 0 0 0 60px rgba(255, 255, 255, 0.1), 0 0 0 80px rgba(255, 255, 255, 0);
+        }
+        }
     </style>
 </head>
 <body>
-    <nav>
+    <nav >
         <ul>
             <li><a href="home">Home</a></li>
             <li><a href="#">Services</a></li>
@@ -61,9 +103,15 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-    <div class="background-image" style="height: 1000px;"> <!-- Added class to apply background image -->
-        <br>
-        <a href="/adddelivery" class="btn btn-outline-success" id="addDeliveryBtn">Add Delivery</a>
+    <div class="background-image">
+
+
+        <div style="margin-left: 900px; margin-top: 300px;"><a href="/adddelivery" class="btn"><i class="animation"></i>Add Delivery Now<i class="animation"></i>
+        </a></div>
+    
+    </div>
+    <div>
+        <img src="2.jpg">
     </div>
 </body>
 </html>
